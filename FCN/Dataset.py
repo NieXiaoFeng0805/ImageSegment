@@ -118,7 +118,7 @@ class LabelProcessor:
     def read_color_map(file_path):
         '''
         将标签对应的颜色进行存储
-        :param :
+        :param :文件路径
         :return:返回一个列表(包含了所有类别的颜色对应的像素值)
         '''
         # 加载csv文件，以逗号隔开

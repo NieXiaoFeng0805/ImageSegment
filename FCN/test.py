@@ -17,13 +17,14 @@ import FCN.cfg as cfg
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 miou_list = [0]
 
+# 导入测试集
 the_test = theDataset([cfg.TEST_ROOT, cfg.TEST_LABEL], cfg.crop_size)
 test_data = DataLoader(the_test, batch_size=cfg.BATCH_SIZE, shuffle=True, num_workers=0)
 
 net = FCN(cfg.DATA_KINDS)  # 网络模型选择
 net.eval()  # 验证模式
 net.to(device)  # 模型放置
-net.load_state_dict(torch.load('xxx.pth'))  # 权重导入
+net.load_state_dict(torch.load('Models/Weights/FirstTest/183.pth'))  # 权重导入
 
 train_acc = 0
 train_miou = 0
@@ -45,7 +46,7 @@ for i, sample in enumerate(test_data):
 
     eval_matrix = CalculateIndicators.eval_semantic_segmentation(pre_label, true_label)
     train_acc = eval_matrix['mean_classes_acc'] + train_acc
-    train_miou = eval_matrix['mIoU'] + train_miou
+    train_miou = eval_matrix['MIoU'] + train_miou
     train_mpa = eval_matrix['pixel_acc'] + train_mpa
     if len(eval_matrix['classes_acc']) < 12:
         eval_matrix['classes_acc'] = 0
@@ -56,12 +57,13 @@ for i, sample in enumerate(test_data):
     print(eval_matrix['classes_acc'], '=================', i)
 epoch_str = (
     'Test_acc:{:.5f} , Test_MIou:{:.5f} , Test_mpa:{:.5f} , Test_classes-acc:{:}'
-    .format(train_acc / (len(test_data) - error),
-            train_miou / (len(test_data) - error),
-            train_mpa / (len(test_data) - error),
-            train_classes_acc / (len(test_data) - error)),
+        .format(train_acc / (len(test_data) - error),
+                train_miou / (len(test_data) - error),
+                train_mpa / (len(test_data) - error),
+                train_classes_acc / (len(test_data) - error)),
 )
 
 if train_miou / (len(test_data) - error) > max(miou_list):
     miou_list.append(train_miou / (len(test_data) - error))
-    print(epoch_str + '========last')
+    print(epoch_str)
+    print('===========last')

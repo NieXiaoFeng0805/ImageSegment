@@ -15,11 +15,11 @@ from Dataset import theDataset
 import FCN.cfg as cfg
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-the_test = theDataset([cfg.TEST_ROOT, cfg.TEST_LABEL], cfg.crop_size)
-test_data = DataLoader(the_test, batch_size=cfg.BATCH_SIZE, shuffle=True, num_workers=0)
+the_test = theDataset([cfg.VAL_ROOT, cfg.VAL_LABEL], cfg.crop_size)
+test_data = DataLoader(the_test, batch_size=1, shuffle=True, num_workers=0)
 
 net = FCN(cfg.DATA_KINDS).to(device)
-net.load_state_dict(torch.load('xxx.pth'))
+net.load_state_dict(torch.load('Models/Weights/FirstTest/409.pth'))
 net.eval()
 
 pd_label_color = pd.read_csv(cfg.class_dict_path, sep=',')
@@ -38,10 +38,10 @@ the_dir = cfg.RESULT_IMAGE
 
 for i, sample in enumerate(test_data):
     valImage = sample['img'].to(device)
-    valLabel = sample['lable'].to(device)
+    valLabel = sample['label'].to(device)
     out = net(valImage)
     out = F.log_softmax(out, dim=1)
-    pre_label = out.max(1)[1].squeeze().cpu().data.numpy()
+    pre_label = out.max(dim=1)[1].squeeze().cpu().data.numpy()
     pre = cm[pre_label]
     pre1 = Image.fromarray(pre)
     pre1.save(the_dir + str(i) + '.png')
