@@ -25,10 +25,11 @@ from torchvision.utils import save_image
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # 制作数据集
 make_test_data = LoadDataset([cfg.TEST_ROOT, cfg.TEST_LABEL], cfg.crop_size)
+# print(make_test_data)
 test_data = DataLoader(make_test_data, batch_size=1, shuffle=False, num_workers=0)
-
+# print(test_data)
 net = DeepLab_v3_plus().to(device)  # 放置网络
-net.load_state_dict(torch.load('Weights/SegNet_weight_150.pth'))  # 加载权重
+net.load_state_dict(torch.load('Weights/DeepLab_v3+_241.pth'))  # 加载权重
 net.eval()  # 验证模式
 
 pd_label_color = pd.read_csv(cfg.class_dict_path, sep=',')  # 读取分类文件
@@ -58,6 +59,6 @@ for i, sample in enumerate(test_data):
     result = Image.fromarray(pre)
     result.save(result_dir + str(i) + '.png')
     print('{}--Done'.format(i))
-    if i == 10:  # 前十张
-        break
+    # if i == 10:  # 前十张
+    #     break
 
