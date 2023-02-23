@@ -21,7 +21,7 @@ net = AttUNet(3, 3).to(device)
 net.load_state_dict(torch.load(weight))
 net.eval()
 
-test_data = 'data/Unet_crop/test/test_0.png'
+test_data = 'data/Unet_crop/test/test_1.png'
 img = keep_image_size_open(test_data)
 
 transform = transforms.Compose([
@@ -36,6 +36,8 @@ img_data = torch.unsqueeze(img_data, dim=0)
 # print(img_data.shape)
 
 out = net(img_data)
+
+
 save_image(out, 'predictResult/predict.png')
 
 # test_pa

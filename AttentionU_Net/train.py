@@ -32,7 +32,7 @@ if __name__ == '__main__':
     loss_func = nn.BCELoss()
 
     epoch = 1
-    while epoch <= 200:
+    while epoch <= 50:
         for i, (image, label) in enumerate(data_loader):
             image, label = image.to(device), label.to(device)
             out = net(image)

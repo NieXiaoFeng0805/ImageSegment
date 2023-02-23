@@ -5,7 +5,7 @@
 @Time：2022/10/31 16:38
 """
 BATCH_SIZE = 2  # 训练批次
-EPOCH = 31  # 迭代次数
+EPOCH = 50  # 迭代次数
 LEARNING_RATE = 1e-4  # 学习率
 CHANNELS = 3  # 图像通道数
 DATA_KINDS = 12  # 数据集的类别

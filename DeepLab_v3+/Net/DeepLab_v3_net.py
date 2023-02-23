@@ -87,10 +87,10 @@ class DeepLab_v3_plus(nn.Module):
 
 
 # 测试
-# if __name__ == '__main__':
-#     model = DeepLab_v3_plus(3, 12, 16, True)
-#     model.eval()
-#     # batch_size,channel,176×240
-#     image = torch.randn(1, 3, 352, 480)
-#     output = model(image)
-#     print('输出维度：', output.size())
+if __name__ == '__main__':
+    model = DeepLab_v3_plus(3, 12, 16, True)
+    model.eval()
+    # batch_size,channel,176×240
+    image = torch.randn(1, 3, 352, 480)
+    output = model(image)
+    print('输出维度：', output.size())

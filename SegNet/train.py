@@ -47,7 +47,7 @@ def train(model):
         # 学习率变化策略
         if epoch % 50 == 0 and epoch != 0:
             for group in optimizer.param_groups:
-                group['lr'] *= 0.5
+                group['lr'] *= 0.8
         # 指标初始化
         train_loss = 0  # 损失值
         train_acc = 0  # 准确率
