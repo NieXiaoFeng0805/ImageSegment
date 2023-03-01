@@ -1,0 +1,1 @@
+(Dataset:CVC-300; Model:PraNet) meanDic:0.824;meanIoU:0.756;wFm:0.810;Sm:0.897;meanEm:0.919;MAE:0.010;maxEm:0.945;maxDice:0.840;maxIoU:0.765;meanSen:0.865;maxSen:1.000;meanSpe:0.957;maxSpe:0.973.

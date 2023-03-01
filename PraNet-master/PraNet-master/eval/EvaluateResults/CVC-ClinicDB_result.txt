@@ -1,0 +1,1 @@
+(Dataset:CVC-ClinicDB; Model:PraNet) meanDic:0.883;meanIoU:0.835;wFm:0.880;Sm:0.924;meanEm:0.944;MAE:0.011;maxEm:0.971;maxDice:0.898;maxIoU:0.847;meanSen:0.893;maxSen:1.000;meanSpe:0.964;maxSpe:0.979.

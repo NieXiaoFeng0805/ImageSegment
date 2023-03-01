@@ -1,0 +1,1 @@
+(Dataset:ETIS-LaribPolypDB; Model:PraNet) meanDic:0.467;meanIoU:0.406;wFm:0.448;Sm:0.708;meanEm:0.690;MAE:0.026;maxEm:0.807;maxDice:0.529;maxIoU:0.449;meanSen:0.492;maxSen:1.000;meanSpe:0.732;maxSpe:0.875.

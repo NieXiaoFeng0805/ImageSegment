@@ -1,0 +1,1 @@
+(Dataset:Kvasir; Model:PraNet) meanDic:0.851;meanIoU:0.792;wFm:0.839;Sm:0.887;meanEm:0.909;MAE:0.044;maxEm:0.917;maxDice:0.858;maxIoU:0.801;meanSen:0.868;maxSen:1.000;meanSpe:0.960;maxSpe:0.970.

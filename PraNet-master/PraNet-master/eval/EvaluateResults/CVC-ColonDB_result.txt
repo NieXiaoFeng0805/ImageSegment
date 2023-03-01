@@ -1,0 +1,1 @@
+(Dataset:CVC-ColonDB; Model:PraNet) meanDic:0.658;meanIoU:0.592;wFm:0.649;Sm:0.795;meanEm:0.811;MAE:0.040;maxEm:0.867;maxDice:0.693;maxIoU:0.614;meanSen:0.671;maxSen:1.000;meanSpe:0.849;maxSpe:0.910.
